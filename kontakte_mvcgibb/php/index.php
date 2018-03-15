@@ -1,5 +1,5 @@
 <?php
-/*
+/* Hallo Amy
  *  @autor Michael Abplanalp
  *  @version Februar 2016
  * 
