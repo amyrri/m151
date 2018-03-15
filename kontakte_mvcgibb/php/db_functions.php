@@ -19,11 +19,10 @@ function db_select_orte() {
  * Datenbankfunktionen zur Tabelle kontakte
  */
 //function db_insert_kontakt($oid, $params) {
-function db_insert_kontakt($params) {
-    $sql = "insert into kontakte (nachname, vorname, strasse, oid, email, tel)
-            values ('".escapeSpecialChars($params['nachname'])."','".escapeSpecialChars($params['vorname'])."',
-					'".escapeSpecialChars($params['strasse'])."', ".$params['oid'].",
-					'".escapeSpecialChars($params['email'])."','".escapeSpecialChars($params['tel'])."')";
+function addUser($params) {
+    $sql = "insert into benutzer (nickname, email, passwort)
+            values ('".escapeSpecialChars($params['nickname'])."','".escapeSpecialChars($params['email'])."',
+					'".escapeSpecialChars($params['passwort'])."')";
     sqlQuery($sql);
 }
 

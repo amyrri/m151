@@ -78,15 +78,20 @@ function getValue($key) {
  * Erstellt das Menu und gibt dieses aus. Wird im Haupttemplate aufgerufen.
  * @param   $mlist      Array mit den Menueinträgen. key: ID (Funktion), value: Menuoption
  */
-function getMenu($mlist) {
+function getMenu() {
+  global $list;
+  $list[0] = "Sign In";
+  $list[1] = "Sign In";
+
+  
   $menu = "";
-  if (count($mlist)) {
+  if (count($list)) {
 	$active_link = getValue("func");
-	if (empty($active_link)) $active_link=key($mlist);
-	foreach ($mlist as $element=>$option) {
+	if (empty($active_link)) $active_link=key($list);
+	foreach ($list as $element=>$option) {
 	  $active = "";
 	  if ($element == $active_link) $active = " class='active'";
-	  $menu .= "<li$active><a href='".$_SERVER['PHP_SELF']."?id=".$element."'>$option</a></li>";
+	  $menu .= "<li$active><a href='".$_SERVER['PHP_SELF']."?menuid=".$element."'>$option</a></li>";
 	}
 	return $menu;
   }

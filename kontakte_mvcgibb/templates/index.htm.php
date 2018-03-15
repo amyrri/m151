@@ -20,10 +20,10 @@
   <nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
       <div class="navbar-header">
-		<a class="navbar-brand">Kontakteverwaltung</a>
+		<a class="navbar-brand">Bilder Datenbank</a>
       </div>
 	  <ul class="nav navbar-nav">
-        <?php echo getMenu(getValue("cfg_menu_list"), "Hauptmenü"); ?>
+        <?php echo getMenu(); ?>
       </ul>
 	</div>
   </nav>
@@ -33,7 +33,7 @@
   <div class="container" style="margin-top:20px">
 	<div class="row">
 	  <div class="col-md-offset-3 col-md-4 text-center small text-muted">
-		&copy;&nbsp;Copyright gibb M.Abplanalp
+		&copy;&nbsp;Copyright Céline & Amy
 	  </div>
 	</div>
   </div>
