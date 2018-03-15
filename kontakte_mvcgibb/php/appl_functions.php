@@ -1,8 +1,7 @@
 <?php
 /*
  *  @autor Michael Abplanalp
- *  @version Februar 2017kzgui
- *hallo
+ *  @version Februar 2017
  *  Dieses Modul beinhaltet Funktionen, welche die Anwendungslogik implementieren.
  */
 
