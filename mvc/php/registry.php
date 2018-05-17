@@ -1,4 +1,5 @@
 <?php 
+
 require("basic_functions.php");
 require("db_functions.php");
 connect();
