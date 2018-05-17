@@ -12,6 +12,7 @@
 function getId() {
   if (isset($_GET['id'])) return $_GET['id'];
   else return "";
+  
 }
 
 /*

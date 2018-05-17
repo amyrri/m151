@@ -30,7 +30,7 @@
   
   <div class="form-group control-group">
 	<div class="col-md-offset-4 col-md-4">
-	  <button type="submit" class="btn btn-success" name="registry" id="registry">registry</button>
+	  <input type="submit" class="btn btn-success" name="registry" value="Registry" id="registry">
 	</div>
   </div>
   
