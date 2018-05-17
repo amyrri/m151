@@ -13,6 +13,7 @@ require("basic_functions.php");
 require("config.php");
 require("db_functions.php");
 require("appl_functions.php");
+require("../js/validation.js");
 
 // Dispatching: Die über den Parameter "id" definierte Funktion ausführen
 $func = getId();
@@ -28,4 +29,6 @@ setValue("inhalt", $func());
 // Haupttemplate aufrufen, Ausgabe an Client (Browser) senden
 echo runTemplate("../templates/index.htm.php");
 mysqli_close(getValue("cfg_db"));
+
+var_dump(getId());
 ?>

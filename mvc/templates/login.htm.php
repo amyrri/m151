@@ -20,10 +20,11 @@
 
 		<div class="form-group control-group">
 			<div class="col-md-offset-4 col-md-4">
-				<button type="submit" class="btn btn-success" name="login"
-					id="login">login</button>
+				<input type="submit" class="btn btn-success" name="login"
+					id="login" value="Login">
 			</div>
 		</div>
 
 	</form>
 </div>
+

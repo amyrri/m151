@@ -10,6 +10,7 @@ $passwort2 = $_POST['password2'];
 
 $registrycheck = registrycheck($_POST['nick'], $_POST['email']);
 
+
 if($registrycheck == null){
     echo "email und name stimmen";
     if($passwort1 === $passwort2){
