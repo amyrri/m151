@@ -86,6 +86,12 @@ function addGalerieDB($name, $beschreibung, $bid)
     $result = getValue("cfg_db")->query($SQLStatement) == True;
 }
 
+function addPicToDB($name, $beschreibung, $gid)
+{
+    $SQLStatement = "insert into picture(name, beschreibung, gid) values ('" . $name . "', '" . $beschreibung . "', '" . $gid . "')";
+    $result = getValue("cfg_db")->query($SQLStatement) == True;
+}
+
 function getUserdata($bid)
 {
     $SQLStatement = "SELECT bid, nickname, email, passwort FROM benutzer WHERE bid='" . $bid . "'";

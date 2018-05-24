@@ -24,8 +24,10 @@ function registry()
 
 function logout()
 {
-    setValue("phpmodule", $_SERVER['PHP_SELF'] . "?id=" . getValue("func"));
-    return runTemplate("../templates/" . getValue("func") . ".htm.php");
+    session_start();
+    
+    session_destroy();
+    header('Location: index.php');
 }
 
 function galerie()
@@ -44,7 +46,7 @@ function addGalerie()
     setValue("phpmodule", $_SERVER['PHP_SELF'] . "?id=" . getValue("func"));
     return runTemplate("../templates/" . getValue("func") . ".htm.php");
 }
-function galerieAnsehen()
+function picUpload()
 {
     setValue("phpmodule", $_SERVER['PHP_SELF'] . "?id=" . getValue("func"));
     return runTemplate("../templates/" . getValue("func") . ".htm.php");

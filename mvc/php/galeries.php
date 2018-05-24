@@ -16,7 +16,7 @@ if ($galeries != null) {
         $beschreibung = $galerie['beschreibung'];
       
 
-        echo "<div class='form-group control-group'><div class='control-label col-md-offset-2 col-md-2'><a href='?id=galerieAnsehen&gid=". $gid ."'>" . $name . "</a></div></div>";
+        echo "<div class='control-label col-md-offset-2 col-md-2'><a href='?id=picUpload&gid=". $gid ."'>" . $name . "</a></div>";
         
     }
 } else {

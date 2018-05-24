@@ -1,6 +1,3 @@
-<?php 
-
-?>
 
 <div class="col-md-12">
 	<form name="kontakt" class="form-horizontal form-condensed"

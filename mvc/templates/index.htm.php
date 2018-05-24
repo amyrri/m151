@@ -33,7 +33,7 @@
   <div class="container" style="margin-top:20px">
 	<div class="row">
 	  <div class="col-md-offset-3 col-md-4 text-center small text-muted">
-		&copy;&nbsp;Copyright Amy und Céline
+		&copy;&nbsp;Copyright Amy und C&#233line
 	  </div>
 	</div>
   </div>

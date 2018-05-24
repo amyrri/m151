@@ -13,7 +13,7 @@ if ($Loginvalues != null) {
     } else {
         session_start();
         $_SESSION['sid'] = $Loginvalues['bid'];
-        header('Location: index.php');
+        header('Location: index.php?id=galerie');
         exit();
         echo "richtig";
     }

@@ -10,13 +10,14 @@
 session_start();
 
 require("basic_functions.php");
+// Dispatching: Die über den Parameter "id" definierte Funktion ausführen
+$func = getId();
 require("config.php");
 require("db_functions.php");
 require("appl_functions.php");
 require("../js/validation.js");
 
-// Dispatching: Die über den Parameter "id" definierte Funktion ausführen
-$func = getId();
+
 // Falls  die verlangte Funktion nicht in der Liste der akzeptierten Funktionen ist, Default-Seite laden
 $flist = getValue("cfg_func_list");
 if (!in_array($func, $flist)) $func = $flist[0];
@@ -30,5 +31,5 @@ setValue("inhalt", $func());
 echo runTemplate("../templates/index.htm.php");
 mysqli_close(getValue("cfg_db"));
 
-var_dump(getId());
+//var_dump(getId());
 ?>
