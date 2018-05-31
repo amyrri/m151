@@ -7,26 +7,29 @@ if (isset($_POST['abbrechen'])) {
     header('Location: index.php?id=galerie');
 } else if (isset($_POST['speichern'])) {
     $galerie = $_POST['gid'];
-    var_dump($_POST);
+    
+
     
     foreach ($_FILES as $file) {
-        $name = $file['name'];
+        $filename = $file['name'];
+        $name = $_POST['name'];
         $besch = $_POST['besch'];
+        $type = $file['type'];
         $size = $file['size'];
         
         if (($size > 4194304)) {
-            $_POST['name2'] = $name;
-            $_POST['besch2'] = $besch;
-             header('Location: index.php?id=picUpload&gid=' . $galerie);
+
+            header('Location: index.php?id=picUpload&gid=' . $galerie);
         } else {
-            // $message = 'File not too large. File is less than 4 megabytes.';
-            echo '<script type="text/javascript">alert("' . $message . '");</script>';
-            // header('Location: index.php?id=picUpload&gid=' . $galerie);
-            addPicToDB($name, $beschreibung, $galerie);
+            $filePath = realpath($_FILES["uploadBild"]["tmp_name"]);
+            addPicToDB($filename, $name, $besch, $galerie, $filePath);
+
+
+
+             header('Location: index.php?id=picture&gid=' . $galerie);
         }
         
-        $sizeByte = $file['size'] / 1024;
-        $sizeByte = $sizeByte / 1024;
+        // $sizeByte = ($file['size'] / 1024)/ 1024; //grösse vom File in MB
     }
 }
 

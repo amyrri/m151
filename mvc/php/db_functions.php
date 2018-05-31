@@ -7,6 +7,7 @@
  * Die Funktionen formulieren die SQL-Anweisungen und rufen dann die Funktionen
  * sqlQuery() und sqlSelect() aus dem Modul basic_functions.php auf.
  */
+session_start();
 function connect()
 {
     $db = mysqli_connect("127.0.0.1", "root", "gibbiX12345", "bilderdatenbank");
@@ -86,10 +87,65 @@ function addGalerieDB($name, $beschreibung, $bid)
     $result = getValue("cfg_db")->query($SQLStatement) == True;
 }
 
-function addPicToDB($name, $beschreibung, $gid)
+function getUserName($bid)
 {
-    $SQLStatement = "insert into picture(name, beschreibung, gid) values ('" . $name . "', '" . $beschreibung . "', '" . $gid . "')";
+    $SQLStatement = "select nickname from benutzer where bid=" . $bid;
+    
+    $result = getValue("cfg_db")->query($SQLStatement);
+    
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $return = [
+                'nickname' => $row['nickname']
+            
+            ];
+        }
+        
+        return $return;
+    }
+    return null;
+}
+
+function addPicToDB($filename, $name, $beschreibung, $gid, $filePath)
+{
+   
+    $galerie = getGalerie($gid);
+    $benutzer = getUserName($_SESSION['sid']);
+    foreach ($galerie as $ga) {
+        $gname = $ga;
+    }
+    foreach($benutzer as $be){
+        $nickname = $be;
+    }
+
+    $path = "../Benutzer/" . $nickname . "/" .$gname . "_" . $gid;
+    
+    $SQLStatement = "insert into picture(name, filename, bezeichnung, verzeichnis, gid) values ('" . $name . "', '" .$filename."', '" . $beschreibung . "', '".$path."', '" . $gid . "')";
     $result = getValue("cfg_db")->query($SQLStatement) == True;
+    
+    copy($filePath , $path."/".$filename);
+    
+}
+
+function getGalerieID($name)
+{
+    $SQLStatement = "select gid, name from galerie where name='" . $name . "'";
+    
+    $result = getValue("cfg_db")->query($SQLStatement);
+    
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $return = [
+                'gid' => $row['gid'],
+                
+                'name' => $row['name']
+            
+            ];
+        }
+        
+        return $return;
+    }
+    return null;
 }
 
 function getUserdata($bid)
@@ -109,5 +165,48 @@ function getUserdata($bid)
         return $return;
     }
     return null;
+}
+
+function getGalerie($gid)
+{
+    $SQLStatement = "SELECT gid, name FROM galerie WHERE gid='" . $gid . "'";
+    $result = getValue("cfg_db")->query($SQLStatement);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $return = [
+                'gid' => $row['gid'],
+                'name' => $row['name']
+            
+            ];
+        }
+        
+        return $return;
+    }
+    return null;
+}
+
+function getPictures($gid){
+    $SQLStatement = "SELECT pid, name, filename, bezeichnung, verzeichnis, gid FROM picture WHERE gid=" . $gid;
+    $result = getValue("cfg_db")->query($SQLStatement);
+    
+    $pictures = array();
+    $count = 0;
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $return = [
+                'pid' => $row['pid'],
+                'name' => $row['name'],
+                'filename' => $row['filename'],
+                'bezeichnung' => $row['bezeichnung'],
+                'verzeichnis' => $row['verzeichnis'],
+                'gid' => $row['gid']
+            ];
+            $count = $count + 1;
+            $pictures[$count] = $return;
+        }
+        return $pictures;
+    }
+    return null;
+    
 }
 ?>

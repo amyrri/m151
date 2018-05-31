@@ -13,19 +13,20 @@ $registrycheck = registrycheck($_POST['nick'], $_POST['email']);
 
 
 if($registrycheck == null){
-    echo "email und name stimmen";
     if($passwort1 === $passwort2){
+        $path = "../Benutzer/".$nick;
         registryy($nick, $email, $passwort1);
         $Loginvalues = loginSelect($_POST['nick']);
         session_start();
         $_SESSION['sid'] = $Loginvalues['bid'];
-        header('Location: index.php');
+        
+        return mkdir($path);
+        
+        header('Location: index.php?id=glarie');
         exit;
     }else{
         echo "passwörter stimmen nicht überein";
     }
-}else{
-    echo "mail oder nick bereits benutzt ";
 }
 
 

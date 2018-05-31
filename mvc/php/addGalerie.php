@@ -13,7 +13,19 @@ if (isset($_POST['abbrechen'])) {
         } else {
             addGalerieDB($_POST['name'], $_POST['comment'], $_SESSION['sid']);
         }
+        
+        $gid = getGalerieID($_POST['name']);
+        $bid = getUserName($_SESSION['sid']);
+
         header('Location: index.php?id=galerie');
+        foreach ($gid as $g) {
+            foreach ($bid as $b) {
+                $bi = $b;
+            }
+            $path = "../Benutzer/" . $bi . "/" . $_POST['name']."_".$g;
+        }
+        return mkdir($path);
+
     }
 }
 

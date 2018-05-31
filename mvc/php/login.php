@@ -9,7 +9,7 @@ if ($Loginvalues != null) {
     
     if ($_POST['password'] != $Loginvalues['passwort']) {
         
-        echo "<label class='control-label col-md-offset-2 col-md2' for='password'>Passwort oder Nickname falsch</label>";
+        header('Location: index.php?id=login');
     } else {
         session_start();
         $_SESSION['sid'] = $Loginvalues['bid'];
@@ -18,7 +18,7 @@ if ($Loginvalues != null) {
         echo "richtig";
     }
 } else {
-    echo 'falsches nick';
+    header('Location: index.php?id=login');
 }
 
 ?>

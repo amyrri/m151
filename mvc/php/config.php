@@ -10,7 +10,7 @@ if( !isset($_SESSION['sid'])){
     // Inhalt des Menus
     setValue("cfg_menu_list", array("login"=>"Login","registry"=>"Registration"));
 }else{
-    setValue("cfg_func_list", array("logout", "galerie", "daten", "addGalerie", "picUpload"));
+    setValue("cfg_func_list", array("logout", "galerie", "daten", "addGalerie", "picUpload", "picture"));
     // Inhalt des Menus
     setValue("cfg_menu_list", array("logout"=>"Logout", "galerie"=>"Galeries", "daten"=>"Meine Daten"));
 }

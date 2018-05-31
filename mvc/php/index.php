@@ -15,7 +15,6 @@ $func = getId();
 require("config.php");
 require("db_functions.php");
 require("appl_functions.php");
-require("../js/validation.js");
 
 
 // Falls  die verlangte Funktion nicht in der Liste der akzeptierten Funktionen ist, Default-Seite laden

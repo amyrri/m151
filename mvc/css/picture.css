@@ -1,0 +1,35 @@
+.picture {
+	display: inline;
+	float: left; 
+	border-color: black;
+}
+
+.piclabel {
+	font-size: 20px;
+	font-weight:bold;
+	display: block;
+	text-align: center;
+	color: black;
+	margin-top: 20px;
+}
+
+.pic {
+	margin: 15px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.btnplus {
+	display: block;
+}
+.labelbez{
+	display: block;
+	color: black;
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.btn-pic{
+	padding: 0;
+
+}

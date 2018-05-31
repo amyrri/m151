@@ -6,7 +6,7 @@
 			<label class="control-label col-md-offset-2 col-md-2" for="nick">Nickname</label>
 			<div class="col-md-4">
 				<input type="text" class="form-control" id="text" name="nick"
-					value="" />
+					value="" required/>
 			</div>
 		</div>
 
@@ -14,7 +14,7 @@
 			<label class="control-label col-md-offset-2 col-md-2" for="password">Passwort</label>
 			<div class="col-md-4">
 				<input type="password" class="form-control" id="password"
-					name="password" value="" />
+					name="password" value="" required/>
 			</div>
 		</div>
 
