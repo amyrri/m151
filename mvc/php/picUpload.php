@@ -25,7 +25,6 @@ if (isset($_POST['abbrechen'])) {
             addPicToDB($filename, $name, $besch, $galerie, $filePath);
 
 
-
              header('Location: index.php?id=picture&gid=' . $galerie);
         }
         

@@ -7,7 +7,10 @@
  * Die Funktionen formulieren die SQL-Anweisungen und rufen dann die Funktionen
  * sqlQuery() und sqlSelect() aus dem Modul basic_functions.php auf.
  */
-session_start();
+if (! session_start()) {
+    session_start();
+}
+
 function connect()
 {
     $db = mysqli_connect("127.0.0.1", "root", "gibbiX12345", "bilderdatenbank");
@@ -108,23 +111,21 @@ function getUserName($bid)
 
 function addPicToDB($filename, $name, $beschreibung, $gid, $filePath)
 {
-   
     $galerie = getGalerie($gid);
     $benutzer = getUserName($_SESSION['sid']);
     foreach ($galerie as $ga) {
         $gname = $ga;
     }
-    foreach($benutzer as $be){
+    foreach ($benutzer as $be) {
         $nickname = $be;
     }
-
-    $path = "../Benutzer/" . $nickname . "/" .$gname . "_" . $gid;
     
-    $SQLStatement = "insert into picture(name, filename, bezeichnung, verzeichnis, gid) values ('" . $name . "', '" .$filename."', '" . $beschreibung . "', '".$path."', '" . $gid . "')";
+    $path = "../Benutzer/" . $nickname . "/" . $gname . "_" . $gid;
+    
+    $SQLStatement = "insert into picture(name, filename, bezeichnung, verzeichnis, gid) values ('" . $name . "', '" . $filename . "', '" . $beschreibung . "', '" . $path . "', '" . $gid . "')";
     $result = getValue("cfg_db")->query($SQLStatement) == True;
     
-    copy($filePath , $path."/".$filename);
-    
+    copy($filePath, $path . "/" . $filename);
 }
 
 function getGalerieID($name)
@@ -185,7 +186,8 @@ function getGalerie($gid)
     return null;
 }
 
-function getPictures($gid){
+function getPictures($gid)
+{
     $SQLStatement = "SELECT pid, name, filename, bezeichnung, verzeichnis, gid FROM picture WHERE gid=" . $gid;
     $result = getValue("cfg_db")->query($SQLStatement);
     
@@ -207,6 +209,68 @@ function getPictures($gid){
         return $pictures;
     }
     return null;
+}
+
+function getPicture($pid)
+{
+    $SQLStatement = "SELECT pid, name, filename, bezeichnung, verzeichnis, gid FROM picture WHERE pid=" . $pid;
+    $result = getValue("cfg_db")->query($SQLStatement);
     
+    $picture = array();
+    $count = 0;
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $return = [
+                'pid' => $row['pid'],
+                'name' => $row['name'],
+                'filename' => $row['filename'],
+                'bezeichnung' => $row['bezeichnung'],
+                'verzeichnis' => $row['verzeichnis'],
+                'gid' => $row['gid']
+            ];
+            $count = $count + 1;
+            $picture[$count] = $return;
+        }
+        return $picture;
+    }
+    return null;
+}
+
+function updatePic($name, $bez, $pid)
+{
+    $SQLStatement = "UPDATE picture SET name='" . $name . "', bezeichnung='" . $bez . "' WHERE pid= " . $pid;
+    $result = getValue("cfg_db")->query($SQLStatement) == True;
+}
+
+function deletePic($pid)
+{
+    $SQLStatement = "DELETE FROM picture WHERE pid=" . $pid;
+    $result = getValue("cfg_db")->query($SQLStatement) == True;
+    var_dump($SQLStatement);
 }
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

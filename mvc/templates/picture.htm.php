@@ -1,5 +1,6 @@
 <form name="picUpload" class="form-horizontal form-condensed"
-	action="index.php?id=picUpload&gid=<?php $gid = $_GET['gid']; echo $gid; ?>" method="post">
+	action="index.php?id=picUpload&gid=<?php $gid = $_GET['gid']; echo $gid; ?>"
+	method="post">
 
 	<div class="form-group control-group">
 		<button class="btn btn-success btnplus" type="submit">

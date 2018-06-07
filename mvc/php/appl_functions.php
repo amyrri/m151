@@ -56,4 +56,9 @@ function picture()
     setValue("phpmodule", $_SERVER['PHP_SELF'] . "?id=" . getValue("func"));
     return runTemplate("../templates/" . getValue("func") . ".htm.php");
 }
+function picData()
+{
+    setValue("phpmodule", $_SERVER['PHP_SELF'] . "?id=" . getValue("func"));
+    return runTemplate("../templates/" . getValue("func") . ".htm.php");
+}
 ?>

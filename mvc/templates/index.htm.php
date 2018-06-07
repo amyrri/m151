@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+
   <link href="../css/bootstrap.min.css" rel="stylesheet" />
-  <link href="../css/picture.css" rel="stylesheet" />
+    <link href="../css/picture.css" rel="stylesheet" />
   <script src="../js/jquery-3.1.1.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>
   <script src="../js/jscript.js"></script>
@@ -34,7 +35,7 @@
   <div class="container" style="margin-top:20px">
 	<div class="row">
 	  <div class="col-md-offset-3 col-md-4 text-center small text-muted">
-		&copy;&nbsp;Copyright Amy und C&#233line
+		&copy;&nbsp;Copyright Amy und Céline
 	  </div>
 	</div>
   </div>

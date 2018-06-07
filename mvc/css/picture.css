@@ -1,12 +1,12 @@
 .picture {
 	display: inline;
-	float: left; 
+	float: left;
 	border-color: black;
 }
 
 .piclabel {
 	font-size: 20px;
-	font-weight:bold;
+	font-weight: bold;
 	display: block;
 	text-align: center;
 	color: black;
@@ -22,14 +22,54 @@
 .btnplus {
 	display: block;
 }
-.labelbez{
+
+.labelbez {
 	display: block;
 	color: black;
 	text-align: center;
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
-.btn-pic{
-	padding: 0;
 
+.btn-pic {
+	padding: 0;
+	background: #2fa4e7;
+	margin: 10px;
 }
+
+.galerielabel {
+	display: inline;
+	float: left;
+	width: 20%;
+	margin-left: 200px;
+	margin-right: 100px;
+	text-align: center;
+	
+}
+.btn-delete {
+	color: #ffffff;
+	background-color: #ff0000;
+	border-color: #bb0000;
+	float: right;
+}
+
+.pic-big{
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
