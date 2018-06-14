@@ -16,16 +16,16 @@ if (isset($_POST['abbrechen'])) {
         
         $gid = getGalerieID($_POST['name']);
         $bid = getUserName($_SESSION['sid']);
-
+        
         header('Location: index.php?id=galerie');
         foreach ($gid as $g) {
             foreach ($bid as $b) {
                 $bi = $b;
             }
-            $path = "../Benutzer/" . $bi . "/" . $_POST['name']."_".$g;
+            
+            $path = "../Benutzer/" . $bi . "/" . $_POST['name'] . "_" . $gid['gid'];
         }
         return mkdir($path);
-
     }
 }
 

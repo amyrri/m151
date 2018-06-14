@@ -2,6 +2,7 @@
 	display: inline;
 	float: left;
 	border-color: black;
+
 }
 
 .piclabel {
@@ -11,12 +12,12 @@
 	text-align: center;
 	color: black;
 	margin-top: 20px;
+
 }
 
 .pic {
-	margin: 15px;
-	margin-top: 10px;
-	margin-bottom: 10px;
+
+  text-align: center;
 }
 
 .btnplus {
@@ -27,14 +28,17 @@
 	display: block;
 	color: black;
 	text-align: center;
-	margin-top: 10px;
-	margin-bottom: 10px;
+
+	padding: 10px;
 }
 
 .btn-pic {
 	padding: 0;
 	background: #2fa4e7;
 	margin: 10px;
+	width: 140px;
+	height: 310px;
+
 }
 
 .galerielabel {
@@ -59,7 +63,23 @@
 	margin-bottom: 20px;
 	
 }
+.picimg{
+	height: 100px;
+	width: 100%;
+	margin: 0;
+	vertical-align: middle;
+}
 
+.bigPic{
+	float: left;
+}
+
+.lblOnePic{
+	text-align: center;
+	font-size: 100px;
+	display: block;
+
+}
 
 
 

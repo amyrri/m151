@@ -21,7 +21,7 @@
 		<div class="form-group control-group">
 			<div class="col-md-offset-4 col-md-4">
 				<input type="submit" class="btn btn-success" name="login"
-					id="login" value="Login">
+					id="login" value="Login"/>
 			</div>
 		</div>
 

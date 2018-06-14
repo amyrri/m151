@@ -15,7 +15,7 @@ if ($Loginvalues != null) {
         $_SESSION['sid'] = $Loginvalues['bid'];
         header('Location: index.php?id=galerie');
         exit();
-        echo "richtig";
+
     }
 } else {
     header('Location: index.php?id=login');

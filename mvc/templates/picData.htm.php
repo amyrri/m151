@@ -2,7 +2,9 @@
 require_once ("AllData.php");
 ?>
 
-<img class="pic-big form-group" alt="Picture" src="<?php echo" " .$vez. "/".$file ."" ;?>" width="300px" height="300px">
+<img class="pic-big form-group" alt="Picture"
+	src="<?php echo" " .$vez. "/".$file ."" ;?>" width="300px"
+	height="300px">
 
 <div class="col-md-12">
 	<form name="picData" class="form-horizontal form-condensed"
@@ -39,7 +41,8 @@ require_once ("AllData.php");
 					name="abbrechen" value="Abbrechen"
 					formaction="index.php?id=picture&gid=<?php var_dump($gid); echo "".$gid."";?>" />
 				<input type="submit" class="btn btn-delete" name="delete"
-					value="Löschen"></inpu>
+					value="Löschen">
+				</inpu>
 			</div>
 		</div>
 

@@ -61,4 +61,16 @@ function picData()
     setValue("phpmodule", $_SERVER['PHP_SELF'] . "?id=" . getValue("func"));
     return runTemplate("../templates/" . getValue("func") . ".htm.php");
 }
+function onePicture()
+{
+    // Template abfüllen und Resultat zurückgeben
+    setValue("phpmodule", $_SERVER['PHP_SELF'] . "?id=" . getValue("func"));
+    return runTemplate("../templates/" . getValue("func") . ".htm.php");
+}
+
+
+
+
+
+
 ?>

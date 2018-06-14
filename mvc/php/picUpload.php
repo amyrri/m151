@@ -8,27 +8,31 @@ if (isset($_POST['abbrechen'])) {
 } else if (isset($_POST['speichern'])) {
     $galerie = $_POST['gid'];
     
-
-    
     foreach ($_FILES as $file) {
         $filename = $file['name'];
         $name = $_POST['name'];
         $besch = $_POST['besch'];
         $type = $file['type'];
         $size = $file['size'];
-        
-        if (($size > 4194304)) {
 
+        if (($size > 4194304)) {
+            $msg = " Zu gross";
+                echo "<script type='text/javascript'>alert('.$msg.');</script>";
             header('Location: index.php?id=picUpload&gid=' . $galerie);
-        } else {
+        }else if($type != "image/jpeg"){
+
+            $msg = "falscher Datentyp";
+                echo "<script type='text/javascript'>alert('.$msg.');</script>";
+
+
+    }else {
             $filePath = realpath($_FILES["uploadBild"]["tmp_name"]);
             addPicToDB($filename, $name, $besch, $galerie, $filePath);
-
-
-             header('Location: index.php?id=picture&gid=' . $galerie);
+            
+            header('Location: index.php?id=picture&gid=' . $galerie);
         }
         
-        // $sizeByte = ($file['size'] / 1024)/ 1024; //grösse vom File in MB
+        // $sizeByte = ($file['size'] / 1024)/ 1024; //grï¿½sse vom File in MB
     }
 }
 

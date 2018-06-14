@@ -1,14 +1,17 @@
-<form name="picUpload" class="form-horizontal form-condensed"
-	action="index.php?id=picUpload&gid=<?php $gid = $_GET['gid']; echo $gid; ?>"
+<form name="picUpload"
+	action="picture.php?pid=<?php echo $pid; ?>&gid=<?php echo $_GET['gid']; ?>"
 	method="post">
 
 	<div class="form-group control-group">
-		<button class="btn btn-success btnplus" type="submit">
+		<button class="btn btn-success btnplus" type="submit" name="add">
 			<img alt="Add" src="../images/add.png" width="20p" height="20p">
 		</button>
 
 
 
+
+	</div>
+	<div class="allPics">
 <?php
 require_once ("picture.php");
 ?>

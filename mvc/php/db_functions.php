@@ -7,7 +7,7 @@
  * Die Funktionen formulieren die SQL-Anweisungen und rufen dann die Funktionen
  * sqlQuery() und sqlSelect() aus dem Modul basic_functions.php auf.
  */
-if (! session_start()) {
+if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
@@ -138,7 +138,6 @@ function getGalerieID($name)
         while ($row = $result->fetch_assoc()) {
             $return = [
                 'gid' => $row['gid'],
-                
                 'name' => $row['name']
             
             ];
@@ -248,6 +247,11 @@ function deletePic($pid)
     $result = getValue("cfg_db")->query($SQLStatement) == True;
     var_dump($SQLStatement);
 }
+
+
+
+
+
 ?>
 
 
