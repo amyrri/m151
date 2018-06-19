@@ -7,6 +7,7 @@ if (isset($_POST['abbrechen'])) {
     header('Location: index.php?id=galerie');
 } else if (isset($_POST['speichern'])) {
     $galerie = $_POST['gid'];
+    var_dump($galerie);
     
     foreach ($_FILES as $file) {
         $filename = $file['name'];
@@ -14,18 +15,16 @@ if (isset($_POST['abbrechen'])) {
         $besch = $_POST['besch'];
         $type = $file['type'];
         $size = $file['size'];
-
+        var_dump($type);
         if (($size > 4194304)) {
             $msg = " Zu gross";
-                echo "<script type='text/javascript'>alert('.$msg.');</script>";
+            echo "<script type='text/javascript'>alert('.$msg.');</script>";
             header('Location: index.php?id=picUpload&gid=' . $galerie);
-        }else if($type != "image/jpeg"){
-
+        } else if ($type != "image/jpeg" && $type != "image/png") {
+            
             $msg = "falscher Datentyp";
-                echo "<script type='text/javascript'>alert('.$msg.');</script>";
-
-
-    }else {
+            echo "<script type='text/javascript'>alert('.$msg.');</script>";
+        } else {
             $filePath = realpath($_FILES["uploadBild"]["tmp_name"]);
             addPicToDB($filename, $name, $besch, $galerie, $filePath);
             

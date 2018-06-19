@@ -9,7 +9,6 @@
   <script src="../js/jquery-3.1.1.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>
   <script src="../js/jscript.js"></script>
-  <script src=2../js/deletePic.js"></script>
   <title>Bilder-DB</title>
   <style>
 	.form-condensed .control-group {

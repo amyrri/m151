@@ -11,7 +11,7 @@
 	display: block;
 	text-align: center;
 	color: black;
-	margin-top: 20px;
+	margin-top: 0;
 
 }
 
@@ -22,6 +22,7 @@
 
 .btnplus {
 	display: block;
+	float: left;
 }
 
 .labelbez {
@@ -37,7 +38,15 @@
 	background: #2fa4e7;
 	margin: 10px;
 	width: 140px;
-	height: 310px;
+	height: 200px;
+
+}
+.btn-pic-gal {
+	padding: 0;
+	background: #2fa4e7;
+	margin: 10px;
+	width: 140px;
+	height: 300px;
 
 }
 
@@ -54,7 +63,13 @@
 	color: #ffffff;
 	background-color: #ff0000;
 	border-color: #bb0000;
-	float: right;
+	float: none;
+}
+.btn-edit {
+	color: #AAAAAA;
+	background-color: #DDDDDD;
+	border-color: #110011;
+	float: none;
 }
 
 .pic-big{
@@ -63,6 +78,8 @@
 	margin-bottom: 20px;
 	
 }
+
+
 .picimg{
 	height: 100px;
 	width: 100%;

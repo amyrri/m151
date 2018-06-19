@@ -3,8 +3,8 @@ require_once ("AllData.php");
 ?>
 
 <img class="pic-big form-group" alt="Picture"
-	src="<?php echo" " .$vez. "/".$file ."" ;?>" width="300px"
-	height="300px">
+<?php echo"src='".$vez."/".$file."' width='".$width."' height='".$height."'"; ?>
+>
 
 <div class="col-md-12">
 	<form name="picData" class="form-horizontal form-condensed"

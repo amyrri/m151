@@ -15,7 +15,7 @@ if ($galeries != null) {
         $beschreibung = $galerie['beschreibung'];
         
         if ($pictures == null) {
-            echo "<button class='btn-pic' formaction='index.php?id=picture&gid=" . $gid . "' type='submit' > <div class='piclabel '>" . $name . "</div><p class='picimg'><img class='pic' width='100px' alt='default' src='../images/default.png'></p><div class='labelbez'>" . $beschreibung . "</div></button>";
+            echo "<button class='btn-pic-gal' formaction='index.php?id=picture&gid=" . $gid . "' type='submit' > <div class='piclabel '>" . $name . "</div><p class='picimg'><img class='pic' width='100px' alt='default' src='../images/default.png'></p><div class='labelbez'>" . $beschreibung . "</div></button>";
         } else {
             foreach ($pictures as $pic) {
                 $pid = $pic['pid'];
@@ -34,10 +34,10 @@ if ($galeries != null) {
                 if ($width >= $height) {
                     $width = "100px";
                     
-                    echo "<button class='btn-pic' formaction='index.php?id=picture&gid=" . $gid . "' type='submit' > <div class='piclabel '>" . $name . "</div><p class='picimg'><img class='pic' width='" . $width . "' alt='" . $fname . "' src='" . $fverzei . "/" . $filename . "'></p><div class='labelbez'>" . $beschreibung . "</div></button>";
+                    echo "<button class='btn-pic-gal' formaction='index.php?id=picture&gid=" . $gid . "&pid=".$pid."' type='submit' > <div class='piclabel '>" . $name . "</div><p class='picimg'><img class='pic' width='" . $width . "' alt='" . $fname . "' src='" . $fverzei . "/" . $filename . "'></p><div class='labelbez'>" . $beschreibung . "</div></button>";
                 } else {
                     $height = "100px";
-                    echo "<button class='btn-pic' formaction='index.php?id=picture&gid=" . $gid . "' type='submit' > <div class='piclabel '>" . $name . "</div><p class='picimg'><img class='pic' height='" . $height . "' alt='" . $fname . "' src='" . $fverzei . "/" . $filename . "'></p><div class='labelbez'>" . $beschreibung . "</div></button>";
+                    echo "<button class='btn-pic-gal' formaction='index.php?id=picture&gid=" . $gid . "&pid=".$pid."' type='submit' > <div class='piclabel '>" . $name . "</div><p class='picimg'><img class='pic' height='" . $height . "' alt='" . $fname . "' src='" . $fverzei . "/" . $filename . "'></p><div class='labelbez'>" . $beschreibung . "</div></button>";
                 }
                 break;
             }

@@ -45,7 +45,7 @@ connect();
 				<input class="btn btn-success" type="submit" name="speichern"
 					value="Speichern"> <input class="btn btn-success" type="submit"
 					name="abbrechen" value="Abbrechen" formnovalidate> <input
-					type="hidden" name="gid" value="<?php echo $_GET['gid']?>">
+					type="hidden" name="gid" value="<?php echo $_GET['gid'];?>">
 			</div>
 		</div>
 

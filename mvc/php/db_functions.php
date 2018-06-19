@@ -245,7 +245,12 @@ function deletePic($pid)
 {
     $SQLStatement = "DELETE FROM picture WHERE pid=" . $pid;
     $result = getValue("cfg_db")->query($SQLStatement) == True;
-    var_dump($SQLStatement);
+
+}
+function deleteGal($gid){
+    $SQLStatement = "DELETE FROM galerie WHERE gid=" . $gid;
+    $result = getValue("cfg_db")->query($SQLStatement) == True;
+    
 }
 
 
