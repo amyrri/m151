@@ -17,7 +17,15 @@ require_once ("allGalerieData.php");
 			<label class="control-label col-md-offset-2 col-md-2" for="bez">Bezeichnung</label>
 			<div class="col-md-4">
 				<input type="text" class="form-control" id="text" name="bez"
-					value="<?php echo" " .$bes. " ";?>" />
+					value="<?php echo" " .$bes. " ";?>" required/>
+			</div>
+		</div>
+		<div class="form-group control-group">
+			<label class="control-label col-md-offset-2 col-md-2" for="bez">Öffentlich</label>
+			<div class="col-md-4">
+				<input type="radio" name="isPublic" value="ja">Ja
+					<input type="radio" name="isPublic" value="nein" checked>Nein
+			
 			</div>
 		</div>
 
@@ -34,7 +42,7 @@ require_once ("allGalerieData.php");
 					name="abbrechen" value="Abbrechen"
 					formaction="index.php?id=picture&gid=<?php echo "".$gid."";?>" /> <input
 					type="submit" class="btn btn-delete" name="delete" value="Löschen">
-				
+
 			</div>
 		</div>
 

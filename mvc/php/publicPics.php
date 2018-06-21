@@ -1,9 +1,11 @@
-<?php 
+<?php
 require_once ("basic_functions.php");
 require_once ("db_functions.php");
 connect();
 
+
 $pictures = getPictures($_GET['gid']);
+
 $index = 1;
 
 if ($pictures == null) {
@@ -29,10 +31,10 @@ if ($pictures == null) {
         
         if ($width >= $height) {
             $width = "100px";
-            echo "<button class='btn-pic' formaction='index.php?id=onePicture&gid=" . $gid . "&pid=" . $pid . "&index=" . $index . "' type='submit' > <div class='piclabel '>" . $name . "</div><p class='picimg'><img class='pic' width='" . $width . "' alt='" . $name . "' src='" . $verzei . "/" . $filename . "'></p></button>";
+            echo "<button class='btn-pic' formaction='index.php?id=onePicturePub&gid=" . $gid . "&pid=" . $pid . "&index=" . $index . "' type='submit' > <div class='piclabel '>" . $name . "</div><p class='picimg'><img class='pic' width='" . $width . "' alt='" . $name . "' src='" . $verzei . "/" . $filename . "'></p></button>";
         } else {
             $height = "100px";
-            echo "<button class='btn-pic' formaction='index.php?id=onePicture&gid=" . $gid . "&pid=" . $pid . "&index=" . $index . "' type='submit' > <div class='piclabel '>" . $name . "</div><p class='picimg'><img class='pic' height='" . $height . "' alt='" . $name . "' src='" . $verzei . "/" . $filename . "'></p></button>";
+            echo "<button class='btn-pic' formaction='index.php?id=onePicturePub&gid=" . $gid . "&pid=" . $pid . "&index=" . $index . "' type='submit' > <div class='piclabel '>" . $name . "</div><p class='picimg'><img class='pic' height='" . $height . "' alt='" . $name . "' src='" . $verzei . "/" . $filename . "'></p></button>";
         }
     }
 }

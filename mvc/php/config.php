@@ -6,9 +6,13 @@
  */
 if( !isset($_SESSION['sid'])){
     // Funktionen
-    setValue("cfg_func_list", array("login","registry", "Public Galeries"));
+    setValue("cfg_func_list", array("login","registry", "publicGaleries", "publicPics", "onePicturePub",));
     // Inhalt des Menus
-    setValue("cfg_menu_list", array("login"=>"Login","registry"=>"Registration"));
+    setValue("cfg_menu_list", array("login"=>"Login","registry"=>"Registration", "publicGaleries"=>"Public Galeries"));
+}else if($_SESSION['sid']==1)){
+    setValue("cfg_func_list", array("logout", "galerie", "daten", "addGalerie", "picUpload", "picture", "picData", "onePicture", "galerieData", "admin"));
+    // Inhalt des Menus
+    setValue("cfg_menu_list", array("logout"=>"Logout", "galerie"=>"Galeries", "daten"=>"Meine Daten", "admin"=>"Admin-Bereich"));
 }else{
     setValue("cfg_func_list", array("logout", "galerie", "daten", "addGalerie", "picUpload", "picture", "picData", "onePicture", "galerieData"));
     // Inhalt des Menus

@@ -62,6 +62,27 @@ function registrycheck($username, $email)
     return null;
 }
 
+function getAllGaleries()
+{
+    $SQLStatement = "SELECT gid, name, beschreibung FROM galerie WHERE isPublic=1";
+    $result = getValue("cfg_db")->query($SQLStatement);
+    
+    $galeries = array();
+    $count = 0;
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $return = [
+                'gid' => $row['gid'],
+                'name' => htmlspecialchars($row['name']),
+                'beschreibung' => htmlspecialchars($row['beschreibung'])
+            ];
+            $count = $count + 1;
+            $galeries[$count] = $return;
+        }
+        return $galeries;
+    }
+    return null;
+}
 function getGaleries($bid)
 {
     $SQLStatement = "SELECT gid, name, beschreibung FROM galerie WHERE bid='" . $bid . "'";
@@ -84,9 +105,9 @@ function getGaleries($bid)
     return null;
 }
 
-function addGalerieDB($name, $beschreibung, $bid)
+function addGalerieDB($name, $beschreibung, $bid, $isP)
 {
-    $SQLStatement = "insert into galerie(name, beschreibung, bid) values ('" . $name . "', '" . $beschreibung . "', '" . $bid . "')";
+    $SQLStatement = "insert into galerie(name, beschreibung, bid, isPublic) values ('" . $name . "', '" . $beschreibung . "', " . $bid . ", ".$isP." )";
     $result = getValue("cfg_db")->query($SQLStatement) == True;
 }
 
@@ -175,14 +196,15 @@ function updateUserW($bid, $email, $pw){
 
 function getGalerie($gid)
 {
-    $SQLStatement = "SELECT gid, name, beschreibung FROM galerie WHERE gid='" . $gid . "'";
+    $SQLStatement = "SELECT gid, name, beschreibung, isPublic FROM galerie WHERE gid='" . $gid . "'";
     $result = getValue("cfg_db")->query($SQLStatement);
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             $return = [
                 'gid' => $row['gid'],
                 'name' => $row['name'],
-                'beschreibung' => $row['beschreibung']
+                'beschreibung' => $row['beschreibung'],
+                'isPublic' => $row['isPublic']
             
             ];
         }
@@ -260,15 +282,11 @@ function deleteUser($bid){
     $result = getValue("cfg_db")->query($SQLStatement) == True;
     
 }
-function updateGal($name, $bez, $gid)
+function updateGal($name, $bez, $gid, $isP)
 {
-    $SQLStatement = "UPDATE galerie SET name='" . $name . "', beschreibung='" . $bez . "' WHERE gid= " . $gid;
+    $SQLStatement = "UPDATE galerie SET name='" . $name . "', beschreibung='" . $bez . "', isPublic=".$isP." WHERE gid= " . $gid;
     $result = getValue("cfg_db")->query($SQLStatement) == True;
 }
-
-
-
-
 
 ?>
 

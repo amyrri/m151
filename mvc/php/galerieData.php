@@ -35,18 +35,23 @@ if(isset($_POST['abbrechen'])){
     header('Location: index.php?id=galerie');
 }else if(isset($_POST['speichern'])){
     $newName = $_POST['name'];
-    
+    $bez;
+    $isPublic;
     if ($_POST['name'] != null && $_POST['bez'] != null) {
         
         $bez = $_POST['bez'];
-        updateGal($newName, $bez, $gid);
-        header('Location: index.php?id=galerie');
-    } else if ($_POST['bez'] == null) {
-        
+    } else if ($_POST['bez'] == null) { 
         $bez = "";
-        updateGal($newName, $bez, $gid);
-        header('Location: index.php?id=galerie');
     }
+    if(isset($_POST['isPublic']) && $_POST['isPublic'] == "ja" ){
+        $isPublic = 1;
+    }else{
+        $isPublic = 0;
+    }
+
+    updateGal($newName, $bez, $gid, $isPublic);
+    header('Location: index.php?id=galerie');
+    
 
 }
 
