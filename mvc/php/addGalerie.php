@@ -1,7 +1,6 @@
 <?php
 require_once ("basic_functions.php");
 require_once ("db_functions.php");
-session_start();
 connect();
 
 if (isset($_POST['abbrechen'])) {
@@ -18,13 +17,10 @@ if (isset($_POST['abbrechen'])) {
         $bid = getUserName($_SESSION['sid']);
         
         header('Location: index.php?id=galerie');
-        foreach ($gid as $g) {
-            foreach ($bid as $b) {
-                $bi = $b;
-            }
+
             
-            $path = "../Benutzer/" . $bi . "/" . $_POST['name'] . "_" . $gid['gid'];
-        }
+            $path = "../Benutzer/" . $bid['nickname'] . "/" . $_POST['name'] . "_" . $gid['gid'];
+
         return mkdir($path);
     }
 }

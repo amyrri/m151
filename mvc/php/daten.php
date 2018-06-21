@@ -3,27 +3,52 @@ require_once ("basic_functions.php");
 require_once ("db_functions.php");
 connect();
 
-if (isset($_POST['nickname'])) {
-    
-    if ($_POST['abbrechen'] === 'abbrechen')
-        $nicknameIP = $_POST['nickname'];
-    $emailIP = $_POST['email'];
-    $passwort1IP = $_POST['password1'];
-    $passwort2IP = $_POST['password2'];
-}
-$data = getUserdata($_SESSION['sid']);
-
-if ($data != null) {
-    
+if (isset($_POST['abbrechen'])) {
+    header('Location: index.php?id=galerie');
+} else if (isset($_POST['speichern'])) {
+    $data = getUserdata($_SESSION['sid']);
     $bid = $data['bid'];
-    $nickname = $data['nickname'];
-    $email = $data['email'];
-    $passwort = $data['passwort'];
+    $email = $_POST['email'];
+    if(isset($_POST['password1']) && isset($_POST['password2'])){
+        $pw = password_hash($_POST['password1'], PASSWORD_DEFAULT);
+        $pw2 = password_hash($_POST['password2'], PASSWORD_DEFAULT);
+        updateUserW($bid, $email, $pw);
+    }else{
+        updateUserO($bid, $email);
+    }
+
+    header('Location: index.php?id=daten');
+}else if(isset($_POST['delete'])){
     
-    // echo "<div class='control-label col-md-offset-2 col-md-2'>" . $email . "</div>";
-} else {
+    $bid = $_SESSION['sid'];
+    $gal = getGaleries($bid);
+    $userN = getUserName($bid);
+
     
-    echo "Keine Fehler";
+    foreach($gal as $g){
+        $gid = $g['gid'];
+        $name = $g['name'];
+        $vezGal = "../Benutzer/".$userN['nickname']."/".$name;
+        $pics = getPictures($gid);
+        foreach($pics as $p){
+            $pid = $p['pid'];
+            $name = $p['filename'];
+            $vez = $p['verzeichnis'];
+            
+            $ort = $vez . '/' . $name;
+            unlink($ort);
+            deletePic($pid);
+        }
+        rmdir($vez);
+        deleteGal($gid);
+    }
+    
+
+    rmdir('../Benutzer/'.$userN['nickname']);
+    deleteUser($bid);
+    
+    header('Location: index.php');
+    
 }
 
 ?>

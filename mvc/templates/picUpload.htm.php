@@ -5,6 +5,7 @@ require_once ("picUpload.php");
 connect();
 
 ?>
+<script src="../js/checkDatentyp.js"></script>
 
 <div class="col-md-12">
 	<form action="picUpload.php" method="post"
@@ -13,16 +14,16 @@ connect();
 		<div class="form-group control-group">
 
 			<div class="col-md-4">
-				<input class="btn" type="file" name="uploadBild" required>
+				<input class="btn" type="file" id="uploadPic" name="uploadBild" onchange="checkTyp(this)" required>
 			</div>
 		</div>
 
 
 		<div class="form-group control-group">
-			<label class="control-label col-md-offset-2 col-md-2" for="name">Name:
+			<label class="control-label col-md-offset-2 col-md-2"  for="name">Name:
 			</label>
 			<div class="col-md-4">
-				<input type="text" class="form-control" id="text" name="name"
+				<input type="text" class="form-control" id="name" id="text" name="name"
 					value="" required />
 			</div>
 		</div>

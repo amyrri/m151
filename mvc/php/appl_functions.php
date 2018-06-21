@@ -67,7 +67,11 @@ function onePicture()
     setValue("phpmodule", $_SERVER['PHP_SELF'] . "?id=" . getValue("func"));
     return runTemplate("../templates/" . getValue("func") . ".htm.php");
 }
-
+function galerieData()
+{
+    setValue("phpmodule", $_SERVER['PHP_SELF'] . "?id=" . getValue("func"));
+    return runTemplate("../templates/" . getValue("func") . ".htm.php");
+}
 
 
 

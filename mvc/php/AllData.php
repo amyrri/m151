@@ -8,9 +8,8 @@ connect();
 $pid = $_GET['pid'];
 $gid = $_GET['gid'];
 
-$picture = getPicture($pid);
+$pic = getPicture($pid);
 
-foreach ($picture as $key=>$pic) {
     $name = $pic['name'];
     $bez = $pic['bezeichnung'];
     $vez = $pic['verzeichnis'];
@@ -24,17 +23,24 @@ foreach ($picture as $key=>$pic) {
     $height = $sizes[1];
     
     if($width >= $height){
-        $width = "80%";
+        $width = "500px";
         $height = null;
+        $widthPD = '200px';
+        $heightPD = null;
+        $heightOne = "300px";
 
     }else{
-        $height = "800px";
+        $height = "500px";
         $width = null;
+        $heightPD = '200px';
+        $widthPD = null;
+        $heightOne = "500px";
         
     }
-    $_POST['index'] = $key;
+    //$_POST['index'] = $key;
     $_POST['pid'] = $pid2;
 
-}
+
+
 
 ?>

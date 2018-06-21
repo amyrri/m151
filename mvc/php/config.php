@@ -6,11 +6,11 @@
  */
 if( !isset($_SESSION['sid'])){
     // Funktionen
-    setValue("cfg_func_list", array("login","registry"));
+    setValue("cfg_func_list", array("login","registry", "Public Galeries"));
     // Inhalt des Menus
     setValue("cfg_menu_list", array("login"=>"Login","registry"=>"Registration"));
 }else{
-    setValue("cfg_func_list", array("logout", "galerie", "daten", "addGalerie", "picUpload", "picture", "picData", "onePicture"));
+    setValue("cfg_func_list", array("logout", "galerie", "daten", "addGalerie", "picUpload", "picture", "picData", "onePicture", "galerieData"));
     // Inhalt des Menus
     setValue("cfg_menu_list", array("logout"=>"Logout", "galerie"=>"Galeries", "daten"=>"Meine Daten"));
 }

@@ -5,13 +5,13 @@ connect();
 
 $nick = $_POST['nick'];
 $email = $_POST['email'];
-$passwort1 = $_POST['password1'];
+$passwort1 = password_hash($_POST['password1'], PASSWORD_DEFAULT);
 $passwort2 = $_POST['password2'];
 
 $registrycheck = registrycheck($_POST['nick'], $_POST['email']);
 
 if ($registrycheck == null) {
-    if ($passwort1 === $passwort2) {
+    if (password_verify($passwort2, $passwort1)) {
         $path = "../Benutzer/" . $nick;
         registryy($nick, $email, $passwort1);
         $Loginvalues = loginSelect($_POST['nick']);

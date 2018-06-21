@@ -2,7 +2,6 @@
 	display: inline;
 	float: left;
 	border-color: black;
-
 }
 
 .piclabel {
@@ -12,12 +11,10 @@
 	text-align: center;
 	color: black;
 	margin-top: 0;
-
 }
 
 .pic {
-
-  text-align: center;
+	text-align: center;
 }
 
 .btnplus {
@@ -29,8 +26,7 @@
 	display: block;
 	color: black;
 	text-align: center;
-
-	padding: 10px;
+	fon padding: 10px;
 }
 
 .btn-pic {
@@ -39,15 +35,14 @@
 	margin: 10px;
 	width: 140px;
 	height: 200px;
-
 }
+
 .btn-pic-gal {
 	padding: 0;
 	background: #2fa4e7;
 	margin: 10px;
 	width: 140px;
 	height: 300px;
-
 }
 
 .galerielabel {
@@ -57,14 +52,15 @@
 	margin-left: 200px;
 	margin-right: 100px;
 	text-align: center;
-	
 }
+
 .btn-delete {
 	color: #ffffff;
 	background-color: #ff0000;
 	border-color: #bb0000;
 	float: none;
 }
+
 .btn-edit {
 	color: #AAAAAA;
 	background-color: #DDDDDD;
@@ -72,41 +68,68 @@
 	float: none;
 }
 
-.pic-big{
+.pic-big {
 	display: block;
 	margin: 0 auto;
 	margin-bottom: 20px;
-	
 }
 
-
-.picimg{
+.picimg {
 	height: 100px;
 	width: 100%;
 	margin: 0;
 	vertical-align: middle;
 }
 
-.bigPic{
+.bigPic {
+
+	margin: 0 auto;
+	text-align: center;
+}
+
+.lblOnePic {
+	text-align: center;
+	margin: 0 auto;
+	font-size: 50px;
+	color: black;
+	display: block;
+}
+
+.lblOnePicbez {
+	text-align: center;
+	margin: 0 auto;
+	font-size: 40px;
+	color: black;
+
+	width: 100%;
+}
+.picarrow{
+	float: none;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.lblDate{
 	float: left;
 }
-
-.lblOnePic{
-	text-align: center;
-	font-size: 100px;
+.onlylbl{
 	display: block;
-
 }
+.lblAllData{}
 
-
-
-
-
-
-
-
-
-
+.lblData{
+	margin: 0;
+	float: none;
+	height: 38px;
+}
+.lblDataAll{
+	text-align: center;
+	margin: 0 auto;
+	
+}
+.allPics{
+	width: 100%;
+}
 
 
 

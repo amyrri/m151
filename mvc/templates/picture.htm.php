@@ -1,5 +1,5 @@
 
-<form name="pics" action="redirect.php" method="post">
+<form name="pics" action="picture.php" method="post">
 
 	<input type="hidden" name="gid" value="<?php echo $_GET['gid']; ?>">
 	<input type="hidden" name="pid" value="<?php echo $_GET['pid']; ?>">
@@ -21,7 +21,7 @@
 <?php
 $gid = $_GET['gid'];
 $_GET['gid'] = $gid;
-require_once ("picture.php");
+require_once ("allPics.php");
 ?>
 </div>
 

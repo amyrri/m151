@@ -7,18 +7,17 @@ $Loginvalues = loginSelect($_POST['nick']);
 
 if ($Loginvalues != null) {
     
-    if ($_POST['password'] != $Loginvalues['passwort']) {
-        
-        header('Location: index.php?id=login');
-    } else {
+    $pw = $_POST['password'];
+    
+    
+    if (password_verify($pw, $Loginvalues['passwort'])) {
         session_start();
         $_SESSION['sid'] = $Loginvalues['bid'];
         header('Location: index.php?id=galerie');
         exit();
-
+    } else {
+        header('Location: index.php?id=login');
     }
-} else {
-    header('Location: index.php?id=login');
 }
 
 ?>

@@ -73,8 +73,8 @@ function getGaleries($bid)
         while ($row = $result->fetch_assoc()) {
             $return = [
                 'gid' => $row['gid'],
-                'name' => $row['name'],
-                'beschreibung' => $row['beschreibung']
+                'name' => htmlspecialchars($row['name']),
+                'beschreibung' => htmlspecialchars($row['beschreibung'])
             ];
             $count = $count + 1;
             $galeries[$count] = $return;
@@ -99,7 +99,7 @@ function getUserName($bid)
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             $return = [
-                'nickname' => $row['nickname']
+                'nickname' => htmlspecialchars($row['nickname'])
             
             ];
         }
@@ -113,15 +113,12 @@ function addPicToDB($filename, $name, $beschreibung, $gid, $filePath)
 {
     $galerie = getGalerie($gid);
     $benutzer = getUserName($_SESSION['sid']);
-    foreach ($galerie as $ga) {
-        $gname = $ga;
-    }
+    
     foreach ($benutzer as $be) {
         $nickname = $be;
     }
     
-    $path = "../Benutzer/" . $nickname . "/" . $gname . "_" . $gid;
-    
+    $path = "../Benutzer/" . $benutzer['nickname'] . "/" . $galerie['name'] . "_" . $gid;
     $SQLStatement = "insert into picture(name, filename, bezeichnung, verzeichnis, gid) values ('" . $name . "', '" . $filename . "', '" . $beschreibung . "', '" . $path . "', '" . $gid . "')";
     $result = getValue("cfg_db")->query($SQLStatement) == True;
     
@@ -156,9 +153,9 @@ function getUserdata($bid)
         while ($row = $result->fetch_assoc()) {
             $return = [
                 'bid' => $row['bid'],
-                'nickname' => $row['nickname'],
-                'email' => $row['email'],
-                'passwort' => $row['passwort']
+                'nickname' => htmlspecialchars($row['nickname']),
+                'email' => htmlspecialchars($row['email']),
+                'passwort' => htmlspecialchars($row['passwort'])
             ];
         }
         
@@ -167,15 +164,25 @@ function getUserdata($bid)
     return null;
 }
 
+function updateUserO($bid, $email){
+    $SQLStatement = "UPDATE benutzer SET email='" . $email . "' WHERE bid= " . $bid;
+    $result = getValue("cfg_db")->query($SQLStatement) == True;
+}
+function updateUserW($bid, $email, $pw){
+    $SQLStatement = "UPDATE benutzer SET email='" . $email . "', passwort='" . $pw . "' WHERE bid= " . $bid;
+    $result = getValue("cfg_db")->query($SQLStatement) == True;
+}
+
 function getGalerie($gid)
 {
-    $SQLStatement = "SELECT gid, name FROM galerie WHERE gid='" . $gid . "'";
+    $SQLStatement = "SELECT gid, name, beschreibung FROM galerie WHERE gid='" . $gid . "'";
     $result = getValue("cfg_db")->query($SQLStatement);
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             $return = [
                 'gid' => $row['gid'],
-                'name' => $row['name']
+                'name' => $row['name'],
+                'beschreibung' => $row['beschreibung']
             
             ];
         }
@@ -196,9 +203,9 @@ function getPictures($gid)
         while ($row = $result->fetch_assoc()) {
             $return = [
                 'pid' => $row['pid'],
-                'name' => $row['name'],
+                'name' => htmlspecialchars($row['name']),
                 'filename' => $row['filename'],
-                'bezeichnung' => $row['bezeichnung'],
+                'bezeichnung' => htmlspecialchars($row['bezeichnung']),
                 'verzeichnis' => $row['verzeichnis'],
                 'gid' => $row['gid']
             ];
@@ -215,22 +222,18 @@ function getPicture($pid)
     $SQLStatement = "SELECT pid, name, filename, bezeichnung, verzeichnis, gid FROM picture WHERE pid=" . $pid;
     $result = getValue("cfg_db")->query($SQLStatement);
     
-    $picture = array();
-    $count = 0;
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             $return = [
                 'pid' => $row['pid'],
-                'name' => $row['name'],
+                'name' => htmlspecialchars($row['name']),
                 'filename' => $row['filename'],
-                'bezeichnung' => $row['bezeichnung'],
+                'bezeichnung' => htmlspecialchars($row['bezeichnung']),
                 'verzeichnis' => $row['verzeichnis'],
                 'gid' => $row['gid']
             ];
-            $count = $count + 1;
-            $picture[$count] = $return;
         }
-        return $picture;
+        return $return;
     }
     return null;
 }
@@ -251,6 +254,16 @@ function deleteGal($gid){
     $SQLStatement = "DELETE FROM galerie WHERE gid=" . $gid;
     $result = getValue("cfg_db")->query($SQLStatement) == True;
     
+}
+function deleteUser($bid){
+    $SQLStatement = "DELETE FROM benutzer WHERE bid=" . $bid;
+    $result = getValue("cfg_db")->query($SQLStatement) == True;
+    
+}
+function updateGal($name, $bez, $gid)
+{
+    $SQLStatement = "UPDATE galerie SET name='" . $name . "', beschreibung='" . $bez . "' WHERE gid= " . $gid;
+    $result = getValue("cfg_db")->query($SQLStatement) == True;
 }
 
 
