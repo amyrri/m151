@@ -184,6 +184,26 @@ function getUserdata($bid)
     }
     return null;
 }
+function getallUsers()
+{
+    $SQLStatement = "SELECT bid, nickname, email, passwort FROM benutzer";
+    $result = getValue("cfg_db")->query($SQLStatement);
+    
+    $galeries = array();
+    $count = 0;
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $return = [
+                'bid' => $row['bid'],
+                'nickname' => htmlspecialchars($row['nickname'])
+            ];
+            $count = $count + 1;
+            $galeries[$count] = $return;
+        }
+        return $galeries;
+    }
+    return null;
+}
 
 function updateUserO($bid, $email){
     $SQLStatement = "UPDATE benutzer SET email='" . $email . "' WHERE bid= " . $bid;
@@ -202,8 +222,8 @@ function getGalerie($gid)
         while ($row = $result->fetch_assoc()) {
             $return = [
                 'gid' => $row['gid'],
-                'name' => $row['name'],
-                'beschreibung' => $row['beschreibung'],
+                'name' => htmlspecialchars($row['name']),
+                'beschreibung' => htmlspecialchars($row['beschreibung']),
                 'isPublic' => $row['isPublic']
             
             ];
